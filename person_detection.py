@@ -111,6 +111,8 @@ def main():
                 for i in range(len(landmarks_front)):
                     x_val = landmarks_front[i].x
                     y_val = landmarks_front[i].y
+                    # W zależności od tego z której strony stoi kamera boczna (prawa strona/lewa od osoby ćwiczącej) należy odiąć wynik od 1
+                    # z_val = 1 - landmarks_side[i].x
                     z_val = landmarks_side[i].x
 
                     writer.writerow([current_timestamp_ms, i, x_val, y_val, z_val])
