@@ -57,7 +57,7 @@ class DualCamera:
     def read(self):
         front_ret, front_frame = self.front_cam.read()
         side_ret, side_frame = self.side_cam.read()
-        return front_ret, front_frame, front_ret, side_frame
+        return front_ret, front_frame, side_ret, side_frame
 
     def release(self):
         self.front_cam.release()
