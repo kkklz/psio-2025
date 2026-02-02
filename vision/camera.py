@@ -32,7 +32,7 @@ class Camera:
         if not ret:
             return None # wtedy koniec wideo
 
-        return frame
+        return ret, frame
 
     def release(self):
         if self.cap:
@@ -42,6 +42,12 @@ class Camera:
         if frame is not None:
             cv2.imshow(self.name, frame)
 
+    def get_fps_count(self):
+        if self.cap.get(cv2.CAP_PROP_FPS) <= 0:
+            return 30.0
+        else:
+            return self.cap.get(cv2.CAP_PROP_FPS)
+
 
 class DualCamera:
     def __init__(self, front_src=0, side_src=1):
@@ -49,9 +55,9 @@ class DualCamera:
         self.side_cam = Camera(side_src, "Side Camera")
 
     def read(self):
-        front_frame = self.front_cam.read()
-        side_frame = self.side_cam.read()
-        return front_frame, side_frame
+        front_ret, front_frame = self.front_cam.read()
+        side_ret, side_frame = self.side_cam.read()
+        return front_ret, front_frame, front_ret, side_frame
 
     def release(self):
         self.front_cam.release()
