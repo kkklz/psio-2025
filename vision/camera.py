@@ -30,7 +30,7 @@ class Camera:
         ret, frame = self.cap.read()
 
         if not ret:
-            return None # wtedy koniec wideo
+            return False, None # wtedy koniec wideo
 
         return ret, frame
 
