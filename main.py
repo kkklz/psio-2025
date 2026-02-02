@@ -89,9 +89,6 @@ def main():
 
                         cv2.putText(vis_f, f"Ocena ASLR (prawa noga): {final_score_r}", (50, 50),
                                     cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2)
-                        if compensation_r:
-                            cv2.putText(vis_f, "Lewa noga musi byc prosta!", (50, 100),
-                                        cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
                         # lewa
                         score_l = fms_algo.analyze_aslr(points_3d, side="left")
                         compensation_l = fms_algo.check_aslr_compensation(points_3d, side="left")
@@ -102,7 +99,13 @@ def main():
 
                         cv2.putText(vis_f, f"Ocena ASLR (lewa noga): {final_score_l}", (50, 150),
                                     cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2)
-                        if compensation_l:
+
+
+                        if compensation_r and score_r != 1 and final_score_l == 1:
+                            cv2.putText(vis_f, "Lewa noga musi byc prosta!", (50, 100),
+                                        cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
+
+                        if compensation_l and score_l != 1 and final_score_r == 1:
                             cv2.putText(vis_f, "Prawa noga musi byc prosta!!", (50, 200),
                                         cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
                         
