@@ -5,7 +5,7 @@ from vision.camera import DualCamera
 from vision.pose_controller import PoseController
 
 # --- KONFIGURACJA ---
-MODEL_PATH = './pose_landmarker_full.task'
+MODEL_PATH = './pose_landmarker_heavy.task'
 VIDEO_FRONT = './wyprost_front.mp4'
 VIDEO_SIDE = './wyprost_side.mp4'
 OUTPUT_CSV = 'dane_3d_class.csv'

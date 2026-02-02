@@ -5,7 +5,7 @@ import csv
 import os
 
 # --- KONFIGURACJA ---
-MODEL_PATH = '../pose_landmarker_full.task'
+MODEL_PATH = '../pose_landmarker_heavy.task'
 VIDEO_FRONT = './wypad_front.mp4'
 VIDEO_SIDE = './wypad_side.mp4'
 OUTPUT_CSV = 'dane_3d_class.csv'
